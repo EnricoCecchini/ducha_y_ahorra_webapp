@@ -1,0 +1,62 @@
+Metadata-Version: 2.1
+Name: loaf
+Version: 0.1.11
+Summary: Effortlessly access your MySQL server and procedures, plus some other utilities!
+Home-page: UNKNOWN
+Author: Posho (Rodrigo Gómez Maitret)
+Author-email: <rodrigo.g.maitret@gmail.com>
+License: UNKNOWN
+Keywords: python,MySQL,database,db,easy,loaf,bread
+Platform: UNKNOWN
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Description-Content-Type: text/markdown
+Requires-Dist: pymysql
+Requires-Dist: datetime
+
+# 🍞 Loaf
+### *So bland yet so good!™*
+
+Effortlessly access your MySQL server and procedures, plus some other utilities.
+
+
+
+## Install
+
+```
+$ pip install loaf
+```
+
+
+
+## Sample Demo
+
+```python
+import loaf
+
+# Setup your credentials with a single line.
+loaf.bake(port=6969, db="pizzeria")
+
+# Make a query easily.
+result = loaf.query("SELECT * from toppings")
+print(result)
+
+# Not lazy enough? Try some of the pre-built queires.
+result = loaf.all("toppings")
+print(result)
+
+# Got stored procedures? No problemo!
+result = loaf.call("ProcedureFindClient", 1)
+print(result)
+```
+
+
+
+![](https://github.com/PoshoDev/Loaf/blob/main/loaf.png?raw=true)
+
+
+
