@@ -98,14 +98,19 @@ def perfil():
         password = request.form.get('passw')
         confPassword = request.form.get('passw2')
         maxWater = float(request.form.get('maxWater'))
+        maxTime = float(request.form.get('maxTime'))
         valid = True
+
+        if not (password and confPassword and maxWater and maxTime):
+            error = 'Faltan campos'
+            return render_template('perfil.html', error = error)
 
         if password != confPassword:
             error = 'Las contraseñas no coinciden'
             valid = False
         
         if valid:
-            loaf.query(f''' UPDATE usuario SET password='{password}', maxWater='{maxWater}' WHERE correo='{uid}' ''')
+            loaf.query(f''' UPDATE usuario SET password='{password}', maxWater='{maxWater}', maxTime='{maxTime}' WHERE correo='{uid}' ''')
 
 
     userInfo = loaf.query(f''' SELECT correo, password, maxWater
@@ -129,9 +134,10 @@ def registro():
         password = request.form.get('passw')
         confPassword = request.form.get('passw2')
         maxWater = float(request.form.get('maxWater'))
+        maxTime = float(request.form.get('maxTime'))
         #print(correo, password, confPassword, maxWater)
         
-        if not (correo and password and confPassword and maxWater):
+        if not (correo and password and confPassword and maxWater and maxTime):
             error = 'Faltan campos'
             return render_template('registro.html', error = error)
         
@@ -145,8 +151,8 @@ def registro():
             error = 'El correo ya esta registrado'
             return render_template('registro.html', error = error)
         
-        loaf.query(f''' INSERT INTO usuario (correo, password, maxWater)
-                        VALUES ('{correo}', '{password}', '{maxWater}')''')
+        loaf.query(f''' INSERT INTO usuario (correo, password, maxWater, maxTime)
+                        VALUES ('{correo}', '{password}', '{maxWater}', '{maxTime}')''')
         
         session['usuario'] = correo
         session['password'] = password
@@ -154,7 +160,7 @@ def registro():
         return redirect(url_for("historial"))
 
     else:
-        return render_template("Registro.html")
+        return render_template("registro.html")
         
 
 # Main
