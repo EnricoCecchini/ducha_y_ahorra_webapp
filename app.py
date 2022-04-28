@@ -97,8 +97,8 @@ def perfil():
 
         password = request.form.get('passw')
         confPassword = request.form.get('passw2')
-        maxWater = float(request.form.get('maxWater'))*1.0
-        maxTime = float(request.form.get('maxTime'))*1.0
+        maxWater = float(request.form.get('maxWater')*1.0)
+        maxTime = float(request.form.get('maxTime')*1.0)
         valid = True
 
         if not (password and confPassword and maxWater and maxTime):
