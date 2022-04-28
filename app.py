@@ -113,7 +113,7 @@ def perfil():
             loaf.query(f''' UPDATE usuario SET password='{password}', maxWater='{maxWater}', maxTime='{maxTime}' WHERE correo='{uid}' ''')
 
 
-    userInfo = loaf.query(f''' SELECT correo, password, maxWater
+    userInfo = loaf.query(f''' SELECT correo, password, maxWater, maxTiempo
                                     FROM usuario
                                     WHERE correo='{uid}' ''')
         
